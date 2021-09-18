@@ -1,0 +1,57 @@
+{
+  "name": "crm-log-web",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": ".",
+  "scripts": {
+    "start": "set PORT=5000 && craco start",
+    "build": "set GENERATE_SOURCEMAP=false && craco build",
+    "test": "craco test"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@craco/craco": "^6.2.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "antd": "^4.16.8",
+    "axios": "^0.21.1",
+    "babel-plugin-import": "^1.13.3",
+    "craco-less": "^1.18.0",
+    "dayjs": "^1.10.6",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-loadable": "^5.5.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.172",
+    "@types/react-router-dom": "^5.1.8"
+  }
+}

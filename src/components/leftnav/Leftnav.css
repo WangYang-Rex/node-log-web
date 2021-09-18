@@ -1,0 +1,30 @@
+.leftnav .btn-collapsed {
+  padding: 16px 0;
+}
+.leftnav .am-icon {
+  margin-right: 8px;
+}
+.leftnav .icon-nav-home {
+  width: 14px;
+  height: 12px;
+}
+.leftnav .icon-nav-tongji {
+  width: 14px;
+  height: 12px;
+}
+.leftnav .icon-nav-crm {
+  width: 14px;
+  height: 12px;
+}
+.leftnav .icon-nav-work {
+  width: 14px;
+  height: 12px;
+}
+.leftnav .icon-nav-my {
+  width: 14px;
+  height: 12px;
+}
+.leftnav .ant-menu-submenu-inline > .ant-menu-submenu-title::after,
+.leftnav .ant-menu-submenu-vertical > .ant-menu-submenu-title::after {
+  display: none;
+}

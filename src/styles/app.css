@@ -1,0 +1,66 @@
+#root {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.pageMain-wrap {
+  height: 100%;
+  width: 100%;
+  min-width: 770px;
+  position: relative;
+}
+.pageMain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.main-content {
+  position: relative;
+}
+.main-content::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.main-content::-webkit-scrollbar-thumb {
+  border-radius: 1em;
+  background-color: #D4D8DB;
+}
+.main-content::-webkit-scrollbar-track {
+  border-radius: 1em;
+  background-color: #fff;
+}
+.nodata {
+  display: block;
+  height: 80%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.nodata .nodataWrap {
+  width: 100%;
+}
+.nodata .nodataWrap .nodata-icon {
+  padding-top: 96px;
+  background: url('../images/no-data.png') top center no-repeat;
+  background-size: 80px;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 30px;
+  color: #666;
+}
