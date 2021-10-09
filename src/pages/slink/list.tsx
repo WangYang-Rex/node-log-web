@@ -75,7 +75,7 @@ function JsErrorList() {
       dataIndex: 'slink',
       key: 'slink',
       render: (text:any) => {
-        let slink = `https://crmlog.superboss.cc/slink/jump/${text}`;
+        let slink = `${window.origin}/slink/jump/${text}`; // `https://crmlog.superboss.cc/slink/jump/${text}`;
         return <a href={slink} target="_blank" rel="noreferrer">{slink}</a>
       },
     },
