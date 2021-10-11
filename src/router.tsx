@@ -6,7 +6,7 @@ let router = [
     path: '/',
     exact: true,
     component:importPath({
-      loader: () => import(/* webpackChunkName:"home" */ "src/pages/jserror/list"),
+      loader: () => import(/* webpackChunkName:"home" */ "src/pages/file/list"),
     }),
   },
   {
