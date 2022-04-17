@@ -24,7 +24,11 @@ jobs:
 
     - name: Build
       run: |
+        node -v
+        yarn -v
+        npm -v
         npm install yarn
         yarn install
+        export CI=false;
         npm run build
         # npx webpack
