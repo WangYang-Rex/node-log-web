@@ -27,7 +27,6 @@ jobs:
         node -v
         yarn -v
         npm -v
-        npm install yarn
         yarn install
         export CI=false;
         npm run build
