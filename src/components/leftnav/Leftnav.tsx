@@ -38,6 +38,12 @@ const Leftnav:React.ComponentType<PropsType & RouteComponentProps> = (props) => 
         <Menu.Item key="file/list" >
           <span>文件系统</span>
         </Menu.Item>
+        <Menu.Item key="rank" >
+          <span>github排名</span>
+        </Menu.Item>
+        <Menu.Item key="threejs" >
+          <span>THREEJS</span>
+        </Menu.Item>
       </Menu>
     </div>
   )

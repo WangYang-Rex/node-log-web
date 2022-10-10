@@ -37,6 +37,20 @@ let router = [
       loader: () => import(/* webpackChunkName:"home" */ "src/pages/file/list"),
     }),
   },
+  {
+    path: '/threejs',
+    exact: true,
+    component: importPath({
+      loader: () => import(/* webpackChunkName:"home" */ "src/pages/threejs/threejs"),
+    }),
+  },
+  {
+    path: '/rank',
+    exact: true,
+    component: importPath({
+      loader: () => import(/* webpackChunkName:"home" */ "src/pages/githubrank/list"),
+    }),
+  },
   
   // {
   //   path: '/login',
@@ -52,7 +66,7 @@ let router = [
   // },
 ]
 const Routers = () => (
-  <main>
+  // <main>
     <Switch>
       {
         [...router].map(({component,path,exact},index)=>{
@@ -60,7 +74,7 @@ const Routers = () => (
         })
       }
     </Switch>
-  </main>
+  // </main>
 );
 
 export default Routers;
