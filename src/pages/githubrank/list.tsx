@@ -1,11 +1,12 @@
 import React, { useRef, useState, useLayoutEffect } from 'react';
 import Fetch from 'src/lib/server/fetch';
-import { Table, Tag, Space, Button, Modal, Form, Input, message, Upload } from 'antd';
+import moment from 'moment';
+import { Table, DatePicker, Space, Button, Modal, Form, Input, message, Upload } from 'antd';
 import './list.less';
 
 function List() {
   const [list, setList] = useState<any>([]);
-  const [date, setDate] = useState(false);
+  const [date, setDate] = useState<any>(moment(new Date().toISOString().slice(0, 10)));
   const pageRef = useRef({
     page: 1,
     pageSize: 20,
@@ -14,7 +15,8 @@ function List() {
   const getList = async () => {
     let res = await Fetch.post('/rank/list.rjson', {
       page: pageRef.current.page,
-      pageSize: pageRef.current.pageSize
+      pageSize: pageRef.current.pageSize,
+      record_date: date.format('YYYY-MM-DD')
     })
     pageRef.current.count = res.count;
     setList(res.list);
@@ -68,8 +70,13 @@ function List() {
 
   return (
     <div className="main slink-list">
-      <div className="content-heaer">
-        <Button type="primary" onClick={() => { onRankClick() }}>发送githubrankofchina</Button>
+      <div className="content-heaer" style={{'marginTop':'10px','marginBottom':'10px'}}>
+        <DatePicker value={date} onChange={(date, dateString) => {
+          console.log(date, dateString);
+          setDate(date);
+        }} />
+        <Button type="primary" style={{'marginLeft':'12px'}} onClick={() => { getList() }}>查询</Button>
+        <Button type="primary" style={{ 'marginLeft': '12px' }} onClick={() => { onRankClick() }}>发送githubrankofchina</Button>
       </div>
       <Table columns={columns} dataSource={list}
         pagination={{
