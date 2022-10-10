@@ -25,6 +25,11 @@ function List() {
     getList()
   }, [])
 
+  const del = async () => {
+    await Fetch.post('/rank/del.rjson', {
+      record_date: date.format('YYYY-MM-DD')
+    })
+  }
   const columns = [
     {
       title: '排名',
@@ -76,6 +81,7 @@ function List() {
           setDate(date);
         }} />
         <Button type="primary" style={{'marginLeft':'12px'}} onClick={() => { getList() }}>查询</Button>
+        <Button type="primary" style={{ 'marginLeft': '12px' }} onClick={() => { del() }}>删除当天数据</Button>
         <Button type="primary" style={{ 'marginLeft': '12px' }} onClick={() => { onRankClick() }}>发送githubrankofchina</Button>
       </div>
       <Table columns={columns} dataSource={list}
