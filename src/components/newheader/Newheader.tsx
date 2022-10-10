@@ -10,7 +10,7 @@ const NewHeader = (props: PropsType) => {
     <div className={'newheader t-FBH '}>
       <div className="logo t-FBH t-FB1">
         <img src={LOGO} alt="" />
-        <span className="yc-crm ">有成CRM</span>
+        <span className="yc-crm ">洋洋de意</span>
         <span className="split-line"></span>
         <span
           className={`title-nav `}
