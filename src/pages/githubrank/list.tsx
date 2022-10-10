@@ -27,7 +27,7 @@ function List() {
 
   const del = async () => {
     await Fetch.post('/rank/del.rjson', {
-      record_date: date.format('YYYY-MM-DD')
+      record_date: new Date().toISOString().slice(0, 10)
     })
   }
   const columns = [
