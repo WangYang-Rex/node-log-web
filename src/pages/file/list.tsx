@@ -83,10 +83,6 @@ function FileList() {
     pageRef.current.page = _page;
     getList();
   };
-  const onInputChange = (_key: string, _value: any) => {
-    // inputRef.current[_key] = _value;
-    setSearchName()
-  }
 
   const UploadProps: any = {
     name: 'file',
@@ -114,7 +110,7 @@ function FileList() {
     action: "/file/upload/stream1.rjson", // 通过stream上传 并保存到服务器 public文件夹
     method: "POST",
     showUploadList: false,
-    beforeUpload: async (file, fileList) => {
+    beforeUpload: async (file: File, fileList: File[]) => {
       console.log(file, fileList);
       let res = await uploadBigFile(file);
       if (res) {
