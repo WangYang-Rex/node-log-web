@@ -1,7 +1,7 @@
 import axios from "axios";
 import Fetch from 'src/lib/server/fetch'
 
-const DEFAULT_SIZE = 2 * 1024 * 1024; // 2M
+const DEFAULT_SIZE = 1 * 1024 * 1024; // 2M
 
 type ChunkType = {
   file: Blob,
@@ -67,4 +67,5 @@ export const uploadBigFile = async (file: File) => {
     size: DEFAULT_SIZE
   });
   console.log('上传成功')
+  return res
 }

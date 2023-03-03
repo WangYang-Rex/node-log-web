@@ -8,6 +8,7 @@ import { uploadBigFile, createChunk } from './util'
 
 function FileList() {
   const [list, setList] = useState<any>([]);
+  const [searchName, setSearchName] = useState<string>('');
   const pageRef = useRef({
     page: 1,
     pageSize: 20,
@@ -17,6 +18,7 @@ function FileList() {
     let res = await Fetch.post('/file/list.rjson', {
       page: pageRef.current.page,
       pageSize: pageRef.current.pageSize,
+      filename: searchName,
     });
     pageRef.current.count = res.count;
     setList(res.list);
@@ -83,7 +85,7 @@ function FileList() {
   };
   const onInputChange = (_key: string, _value: any) => {
     // inputRef.current[_key] = _value;
-    const formData = new FormData();
+    setSearchName()
   }
 
   const UploadProps: any = {
@@ -98,9 +100,6 @@ function FileList() {
         console.log(info.file, info.fileList);
       }
       if (info.file.status === 'done') {
-        // this.setState({
-        //   picUrl:info.file.response.data,
-        // })
         console.log(info);
         message.success(`上传成功`);
         getList();
@@ -115,33 +114,23 @@ function FileList() {
     action: "/file/upload/stream1.rjson", // 通过stream上传 并保存到服务器 public文件夹
     method: "POST",
     showUploadList: false,
-    beforeUpload: (file, fileList) => {
+    beforeUpload: async (file, fileList) => {
       console.log(file, fileList);
-      uploadBigFile(file);
+      let res = await uploadBigFile(file);
+      if (res) {
+        message.success(`上传成功`);
+        getList();
+      } else {
+        message.success(`上传失败`);
+      }
       return false;
     },
-    // onChange: (info: any) => {
-    //   if (info.file.status !== 'uploading') {
-    //     console.log(info.file, info.fileList);
-    //   }
-    //   if (info.file.status === 'done') {
-    //     // this.setState({
-    //     //   picUrl:info.file.response.data,
-    //     // })
-    //     console.log(info);
-    //     message.success(`上传成功`);
-    //     getList();
-    //   } else if (info.file.status === 'error') {
-    //     message.error(`${info.file.response.data} 上传失败`);
-    //   }
-    // },
   };
 
   return (
     <div className="main JsErrorList">
       <div className="content-header">
-        文件名称：<Input className="mr_12" style={{ width: 120 }} onChange={(e) => onInputChange('filename', e.target.value)} />
-        {/* 用户名称：<Input className="mr_12" style={{ width: 120 }}  onChange={(e)=>onInputChange('user_name',e.target.value)}/> */}
+        文件名称：<Input className="mr_12" style={{ width: 120 }} value={ searchName} onChange={(e) => setSearchName(e.target.value)} />
         <Button type="primary" className="mr_12" onClick={getList}>查询</Button>
         <Upload {...UploadProps} className="mr_12">
           <Button type="primary" >
