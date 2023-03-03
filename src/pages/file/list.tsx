@@ -3,9 +3,7 @@ import React, { useRef, useState, useLayoutEffect } from 'react';
 import Fetch from 'src/lib/server/fetch'
 import { Table, Space, Button, Modal, Input, message, Pagination, Select, Upload } from 'antd';
 import dayjs from 'dayjs';
-const { Option } = Select;
-
-const { confirm } = Modal;
+import { uploadBigFile, createChunk } from './util'
 
 
 function FileList() {
@@ -85,13 +83,15 @@ function FileList() {
   };
   const onInputChange = (_key: string, _value: any) => {
     // inputRef.current[_key] = _value;
+    const formData = new FormData();
   }
 
   const UploadProps: any = {
     name: 'file',
-    action: "/file/upload/stream.rjson", // "/file/upload/file.rjson",
+    // action: "/file/upload/stream1.rjson", // 通过stream上传 并保存到服务器 public文件夹
+    action: "/file/upload/stream.rjson", // 通过stream上传 并上传到oss
+    // "/file/upload/file.rjson", // 文件上传
     method: "POST",
-    listType: 'picture',
     showUploadList: false,
     onChange: (info: any) => {
       if (info.file.status !== 'uploading') {
@@ -110,15 +110,47 @@ function FileList() {
     },
   };
 
+  const UploadProps1: any = {
+    name: 'file',
+    action: "/file/upload/stream1.rjson", // 通过stream上传 并保存到服务器 public文件夹
+    method: "POST",
+    showUploadList: false,
+    beforeUpload: (file, fileList) => {
+      console.log(file, fileList);
+      uploadBigFile(file);
+      return false;
+    },
+    // onChange: (info: any) => {
+    //   if (info.file.status !== 'uploading') {
+    //     console.log(info.file, info.fileList);
+    //   }
+    //   if (info.file.status === 'done') {
+    //     // this.setState({
+    //     //   picUrl:info.file.response.data,
+    //     // })
+    //     console.log(info);
+    //     message.success(`上传成功`);
+    //     getList();
+    //   } else if (info.file.status === 'error') {
+    //     message.error(`${info.file.response.data} 上传失败`);
+    //   }
+    // },
+  };
+
   return (
     <div className="main JsErrorList">
       <div className="content-header">
         文件名称：<Input className="mr_12" style={{ width: 120 }} onChange={(e) => onInputChange('filename', e.target.value)} />
         {/* 用户名称：<Input className="mr_12" style={{ width: 120 }}  onChange={(e)=>onInputChange('user_name',e.target.value)}/> */}
         <Button type="primary" className="mr_12" onClick={getList}>查询</Button>
-        <Upload {...UploadProps} >
+        <Upload {...UploadProps} className="mr_12">
           <Button type="primary" >
               上传图片
+          </Button>
+        </Upload>
+        <Upload {...UploadProps1} className="mr_12">
+          <Button type="primary">
+            上传大文件
           </Button>
         </Upload>
       </div>
