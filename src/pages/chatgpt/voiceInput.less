@@ -1,0 +1,48 @@
+.VoiceInput {
+  background: #444654;
+  position: relative;
+  .voice-i-content {
+    // padding-bottom: 160px;
+
+    .v-i-row{
+      padding: 24px 0;
+
+      &:nth-child(2n+1) {
+        background-color: #343541;
+      }
+      .v-i-row-content {
+        width: 640px;
+        margin: 0 auto;
+
+        .v-i-row-img {
+          width: 50px;
+          img {
+            width: 30px;
+          }
+        }
+        .v-i-row-text {
+          color: #fff;
+          line-height: 24px;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+  .voice-i-bottom {
+    // position: fixed;
+    // bottom: 0;
+    height: 120px;
+    // padding-bottom: 48px;
+    width: 100%;
+    .v-i-bottom-content {
+      width: 640px;
+      margin: 0 auto;
+      .VoiceInputEle {
+        max-width: 100%;
+      }
+    }
+    .info {
+      color: #fff;
+    }
+  }
+}

@@ -51,6 +51,13 @@ let router = [
       loader: () => import(/* webpackChunkName:"home" */ "src/pages/githubrank/list"),
     }),
   },
+  {
+    path: '/voiceInput',
+    exact: true,
+    component: importPath({
+      loader: () => import(/* webpackChunkName:"home" */ "src/pages/chatgpt/voiceInput"),
+    }),
+  },
   
   // {
   //   path: '/login',

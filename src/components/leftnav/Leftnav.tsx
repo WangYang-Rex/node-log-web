@@ -44,6 +44,9 @@ const Leftnav:React.ComponentType<PropsType & RouteComponentProps> = (props) => 
         <Menu.Item key="threejs" >
           <span>THREEJS</span>
         </Menu.Item>
+        <Menu.Item key="voiceInput" >
+          <span>语音转文字</span>
+        </Menu.Item>
       </Menu>
     </div>
   )
