@@ -1,12 +1,12 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { importPath } from './loadable';
 let router = [
   {
     path: '/',
     exact: true,
-    component:importPath({
-      loader: () => import(/* webpackChunkName:"home" */ "src/pages/file/list"),
+    component: importPath({
+      loader: () => import(/* webpackChunkName:"home" */ "src/pages/chatgpt/voiceInput"),
     }),
   },
   {
@@ -73,15 +73,13 @@ let router = [
   // },
 ]
 const Routers = () => (
-  // <main>
-    <Switch>
-      {
-        [...router].map(({component,path,exact},index)=>{
-          return <Route exact={exact} path={path} component={component} key={path} />
-        })
-      }
-    </Switch>
-  // </main>
+  <Switch>
+    {
+      [...router].map(({ component, path, exact }, index) => {
+        return <Route exact={exact} path={path} component={component} key={path} />
+      })
+    }
+  </Switch>
 );
 
 export default Routers;
