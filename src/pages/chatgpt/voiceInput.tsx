@@ -88,7 +88,7 @@ const VoiceInput = () => {
       <div className="voice-i-bottom">
         <div className="v-i-bottom-content">
           <Input id="VoiceInputEle" className="VoiceInputEle" placeholder="点击开始语音识别，请说出你想问的问题"
-            value={text ? text + '...' : ''}
+            value={text}
             onChange={e => {
               setText(e.target.value)
             }}
